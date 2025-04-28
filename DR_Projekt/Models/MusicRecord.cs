@@ -19,7 +19,11 @@
                     throw new ArgumentNullException("Hov du glemte at skrive en kunstner?!");
 
                 }
-
+                 if ( value.Length < 2)
+                 { 
+                    throw new ArgumentOutOfRangeException("Titel skal have mindst 2 bogstavere ");
+                 }
+                     
                 _title = value;
             }
 
