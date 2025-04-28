@@ -19,14 +19,27 @@
                     throw new ArgumentNullException("Hov du glemte at skrive en kunstner?!");
 
                 }
-                 if ( value.Length < 2)
-                 { 
+                if (value.Length < 2)
+                {
                     throw new ArgumentOutOfRangeException("Titel skal have mindst 2 bogstavere ");
-                 }
-                     
+                }
+
                 _title = value;
             }
 
+        }
+        public int Duration
+        {
+            get => _duration;
+
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("you can not go back in time");
+                }
+                _duration = value;
+            }
         }
 
         public override string ToString() {

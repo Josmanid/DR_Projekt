@@ -12,20 +12,42 @@ namespace DR_Projekt.Models.Tests
     public class MusicRecordTests
     {
 
-        [TestMethod()]
-        public void TestTitle() {
+        [TestInitialize()]
+        public void Setup() {
             //Arrange
             MusicRecord musicRecord = new MusicRecord();
+        }
+
+
+        [TestMethod()]
+        public void TestTitle() {
+           
             //Act
      
             //Assert
             Assert.ThrowsException<ArgumentNullException>(
                 () => musicRecord.Title = null);
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => musicRecord.Title = "c");
+        }
+
+        [TestMethod()]
+        public void TestDuration() {
+
+            
         }
 
         [TestMethod()]
         public void ToStringTest() {
-            Assert.Fail();
+            //Arrange
+            MusicRecord musicRecord = new MusicRecord();
+            //Act
+            musicRecord.Title = "test";
+            string result = musicRecord.ToString();
+            //Assert
+            Assert.AreEqual("test",result);
+
+
         }
     }
 }
