@@ -1,4 +1,4 @@
-﻿namespace DR_Projekt.Models
+﻿        namespace DR_Projekt.Models
 {
     public class MusicRecord
     {
@@ -39,6 +39,20 @@
                     throw new ArgumentOutOfRangeException("you can not go back in time");
                 }
                 _duration = value;
+            }
+        }
+
+        public int Year
+        {
+            get => _year;
+
+            set
+            {
+                if (value < 1940)
+                {
+                    throw new ArgumentOutOfRangeException("This is too ancient");
+                }
+                _year = value;
             }
         }
 

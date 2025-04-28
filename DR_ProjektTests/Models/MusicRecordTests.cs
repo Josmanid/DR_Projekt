@@ -12,18 +12,14 @@ namespace DR_Projekt.Models.Tests
     public class MusicRecordTests
     {
 
-        [TestInitialize()]
-        public void Setup() {
-            //Arrange
-            MusicRecord musicRecord = new MusicRecord();
-        }
 
 
         [TestMethod()]
-        public void TestTitle() {
-           
+        public void TestTitle()
+        {
+
             //Act
-     
+            MusicRecord musicRecord = new MusicRecord();
             //Assert
             Assert.ThrowsException<ArgumentNullException>(
                 () => musicRecord.Title = null);
@@ -32,20 +28,33 @@ namespace DR_Projekt.Models.Tests
         }
 
         [TestMethod()]
-        public void TestDuration() {
-
-            
+        public void TestDuration()
+        {
+            MusicRecord musicRecord = new MusicRecord();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => musicRecord.Duration = -1);
+            musicRecord.Duration = 1;
+            Assert.AreEqual(1, musicRecord.Duration);
         }
 
         [TestMethod()]
-        public void ToStringTest() {
+        public void TestYear()
+        {
+            MusicRecord musicRecord = new MusicRecord();
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => musicRecord.Year = 1939);
+            musicRecord.Year = 1945;
+            Assert.AreEqual(1945, musicRecord.Year);
+        }
+
+        [TestMethod()]
+        public void ToStringTest()
+        {
             //Arrange
             MusicRecord musicRecord = new MusicRecord();
             //Act
             musicRecord.Title = "test";
             string result = musicRecord.ToString();
             //Assert
-            Assert.AreEqual("test",result);
+            Assert.AreEqual("test", result);
 
 
         }
