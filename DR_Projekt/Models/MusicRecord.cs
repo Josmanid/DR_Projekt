@@ -20,7 +20,7 @@
 
                 }
 
-                _title = value;
+                _title = value; 
             }
 
         }
